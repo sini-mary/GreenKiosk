@@ -4,36 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'inventory/products_list.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="stylesheet" href=" {% static 'inventory/products_list.css'%}">
-    <title>Document</title>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
 
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #EE6D10;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #FF9130;
+        }
+    </style>
+    <title>Customer List</title>
 </head>
 <body>
     <table>
-        <th class="heading">
-            <td>Vendor</td>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Image</td>
-            <td>Edit</td>
-
-          </th>
-
-          {%for customer in customer%}
-
-          <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.last_name}}</td>
-            <td>{{customer.email}}</td>
-            <td>{{customer.address}}</td>
-
-            <td> <button  >Edit Product</button></td>       
-
-         </tr>
-      {%endfor%}
+        <tr>
+            <th>First Name</th>
+            <th> Last Name</th>
+            <th>Email</th>
+            <th>Location</th>
+        </tr>
+        {% for customer in customer %}
+        <tr>
+            <td>{{ customer.first_name }}</td>
+            <td>{{ customer.last_name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address }}</td>
+        </tr>
+        {% endfor %}
     </table>
-    
 </body>
 </html>

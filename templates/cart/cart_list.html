@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+h2 {
+    margin-top: 0;
+    color: #333333;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.cart-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+.cart-item-name {
+    font-weight: bold;
+}
+.cart-item-price {
+    color: #666666;
+}
+.cart-total {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+button {
+    background-color: #db8534;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #e7aa26;
+}
+</style>
+<body>
+    <div class="product-grid">
+        <div class="container">
+            <h2>Your Shopping Cart</h2>
+            
+            <div class="cart-item">
+                <img src="/images/images/carrots.jpg">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">Carrots</div>
+                    <div class="cart-item-price">KSH10.00</div>
+                </div>
+            </div>
+            
+            <div class="cart-item">
+                <img src="/images/images/capsicum.jpg" alt="">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">Capsicum</div>
+                    <div class="cart-item-price">KSH 150.00</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="/images/images/tomatoes.jpg" alt="">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">Tomatoes</div>
+                    <div class="cart-item-price">KSH 150.00</div>
+                </div>
+            </div>
+            <div class="cart-total">
+                Total: KSH 160.00
+            </div>
+            
+           <a href="index.html"><button  >Checkout</button></a> 
+        </div>
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{product.image.url}}" alt="Product Image" class="product-image">
+            <p class="product-name">{{ product.name }}</p>
+            <p class="product-price">{{ product.price }}</p>
+            <p class="product-description">{{ product.description }}</p>
+            <div class="action-buttons">
+                <a href="{% url 'product_detail_view' id=product.id %}" class="action-button">View Details</a>
+                <a href="{% url 'product_edit_view' id=product.id %}" class="action-button">Edit Product</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

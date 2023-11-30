@@ -24,7 +24,7 @@ def  order_detail(request,id):
 
 def order_list(request):
     orders = Order.objects.all()
-    return render (request, "order/order_list.html", {"orders": orders})
+    return render (request, "Order/order_list.html", {"orders": orders})
 
 
 def order_edit(request, id):

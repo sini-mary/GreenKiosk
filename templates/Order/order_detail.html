@@ -8,10 +8,11 @@
     <link rel="stylesheet" href=" {% static 'inventory/product_detail.css' %} ">
 </head>
 <body>
+    {% for order in orders%}
     <h4>{{order.name}}</h4>
     <p>{{order.order_number}} </p>
     
     <span>{{order.total}}</span>
-    
+    {%endfor%}
 </body>
 </html>

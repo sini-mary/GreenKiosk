@@ -1,5 +1,4 @@
 from .views import order_upload,order_detail,order_edit,order_list
-from .import views
 from django.urls import path
 
 

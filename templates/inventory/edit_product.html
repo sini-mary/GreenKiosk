@@ -3,14 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .upload-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .upload-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .upload-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .upload-form input[type="text"],
+        .upload-form input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .upload-form input[type="text"]:focus,
+        .upload-form input[type="file"]:focus {
+            border-color: #EE6D10;
+        }
+
+        .upload-form button[type="submit"] {
+            background-color: #EE6D10;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 16px;
+        }
+
+        .upload-form button[type="submit"]:hover {
+            background-color: #FF9130;
+        }
+    </style>
     <title>Product Upload</title>
 </head>
 <body>
-    <h2>Edit product Form</h2>
-    <form method="POST" class="upload_form" enctype="multipart/form-data">
-        {% csrf_token %}  <!-- CSRF token -->
-        {{ form.as_p }}   <!-- Render form fields as paragraphs -->
-        <button type="submit">Save</button>
-    </form>
+    <div class="upload-form">
+        <h2>Edit Product Form</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="{{ form.name.id_for_label }}">Product Name:</label>
+            {{ form.name }}
+            <label for="{{ form.price.id_for_label }}">Product Price:</label>
+            {{ form.price }}
+            <label for="{{ form.image.id_for_label }}">Product Image:</label>
+            {{ form.image }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
 </body>
 </html>

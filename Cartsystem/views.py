@@ -1,12 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import CartuploadForm
-def upload_cart(request):
-    form = CartuploadForm()
-    return render(request,"cart/cart_upload.html",{"form":form})
+from Cartsystem.models import Cart
+from inventory.models import Product
+def upload_cart(request):                      #the request represents a http request
+    if request.method == 'POST':
+        uploaded_product = request.FILES["image"]
+        form = CartuploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CartuploadForm()
+        
+    return render(request, "cart/cart_list.html", {"form": form})
 
-# def view_cart(request):
-#     cart = get_object_or_404(Cart, user=request.user)
-#     cart_items = cart.items.all()
-#     total_price = sum(item.product.price * item.quantity for item in cart_items)
-    
-#     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total_price': total_price})
+  
+def cart_list(request):
+     cart= Cart.objects.all()
+     return render (request,"cart/cart_list.html",{"cart":cart})        
+ 
+def  cart_detail(request,id):
+  product = Product.objects.get(id =id)
+  return render(request,"cart/cart_detail_view.html",{"product":product})

@@ -10,4 +10,4 @@ class  Payment(models.Model):
     order = models.TextField()
     
     def __str__(self):
-        return  self.amount
+        return  self.status

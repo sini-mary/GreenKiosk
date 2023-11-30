@@ -32,9 +32,6 @@ def index(request):
   return render(request,"inventory/index.html")
 
 
-def cart(request):
-  return render(request,"inventory/cart.html")
-
 
 def cart_upload(request):
   return render(request,"cart/cart_upload.html")
@@ -48,7 +45,7 @@ def edit_product(request, id):
 
         if form.is_valid():
             form.save()
-            return redirect('product_detail_view', id=id)  # Corrected redirect line
+            return redirect('product_detail_view', id=id)  
 
     else:
         form = ProductuploadForm(instance=product)

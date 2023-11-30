@@ -20,13 +20,18 @@ from django.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("inventory/", include("inventory.urls")),
     path("Cartsystem/", include("Cartsystem.urls")),
     path("Customer/", include("Customer.urls")),
     path("vendor/",include("vendor.urls")),
-    path("payment/",include("Payment.urls"))
+    path("payment/",include("Payment.urls")),
+    path("Order/",include("Order.urls")),
+    path("Cartsystem/",include("Cartsystem.urls"))
+
 
 ]
 if settings.DEBUG:

@@ -4,9 +4,9 @@ from  Order.models import Order
 
 # Create your models here.
 class Cart(models.Model):
-    products = models.ManyToManyField(Product)
+    products = models.OneToOneField(Product,on_delete=models.CASCADE,null=True)
     orderrr =  models.OneToOneField(Order,on_delete=models.CASCADE,null=True)
-    product =models.TextField()
+    image = models.ImageField(upload_to="images")
     total = models.IntegerField()
     number_of_products = models.IntegerField()
     shipping_cost = models.FloatField()
